@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import com.hzmy.zm.dropdonwdemo.adapter.TravelingAdapter;
 import com.hzmy.zm.dropdonwdemo.model.FilterData;
 import com.hzmy.zm.dropdonwdemo.model.FilterEntity;
 import com.hzmy.zm.dropdonwdemo.model.FilterTwoEntity;
@@ -121,8 +122,7 @@ public class TestActivity extends AppCompatActivity
         {
             int height = mScreenHeight - DensityUtil.dip2px(mContext, 95); // 95 = 标题栏高度 ＋ FilterView的高度
             mAdapter.setData(ModelUtil.getNoDataEntity(height));
-        } else
-        {
+        } else {
             mAdapter.setData(list);
         }
         mAdapter.notifyDataSetChanged();

@@ -202,6 +202,8 @@ public class FilterView extends LinearLayout implements View.OnClickListener {
         // 左边列表视图
         leftAdapter = new FilterLeftAdapter(mContext, filterData.getCategory());
         lvLeft.setAdapter(leftAdapter);
+
+        //从保存的数据中获取选择的数据
         leftAdapter.setSelectedEntity(selectedCategoryEntity);
 
         lvLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -222,6 +224,9 @@ public class FilterView extends LinearLayout implements View.OnClickListener {
                         if (onItemCategoryClickListener != null) {
                             onItemCategoryClickListener.onItemCategoryClick(selectedCategoryEntity);
                         }
+
+                        tvCategory.setText(selectedCategoryEntity.getSelectedFilterEntity().getKey());
+
                     }
                 });
             }
@@ -243,6 +248,9 @@ public class FilterView extends LinearLayout implements View.OnClickListener {
                 if (onItemCategoryClickListener != null) {
                     onItemCategoryClickListener.onItemCategoryClick(selectedCategoryEntity);
                 }
+
+                tvCategory.setText(selectedCategoryEntity.getSelectedFilterEntity().getKey());
+
             }
         });
     }
@@ -299,7 +307,7 @@ public class FilterView extends LinearLayout implements View.OnClickListener {
             public void onGlobalLayout() {
                 llContentListView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 panelHeight = llContentListView.getHeight();
-                Toast.makeText(mContext, "高度：" + panelHeight , Toast.LENGTH_LONG).show();
+//                Toast.makeText(mContext, "高度：" + panelHeight , Toast.LENGTH_LONG).show();
                 ObjectAnimator.ofFloat(llContentListView, "translationY", -panelHeight, 0).setDuration(200).start();
             }
         });
